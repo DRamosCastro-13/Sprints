@@ -1,27 +1,41 @@
+import{printOptions, printTemplate, optionGenres, createTemplate, filterByGenre, filterByName, createCard} from '../module/funciones.js'
+
 const divCard = document.getElementById("container");
+const selectContainer = document.getElementById('genresDropdown')
+const repeatedGenres = movies.map(movie => movie.genres)
+const separatedGenres = new Set (repeatedGenres.flat())
 
-function createCard(movies){
-    const article = document.createElement("article");
 
-    article.className = "flex-col bg-[#4e435e] border-box h-90 w-100 p-4 border-solid border-black border-2 rounded-xl justify-center";
-    article.innerHTML = `
-        <img class=" object-cover w-100" src="${movies.image}" alt="${movies.title}">
-        <h3 class="font-bold text-lg my-1.5">${movies.title}</h3>
-        <h4 class="text-sm italic my-1.5">${movies.tagline}</h4>
-        <p class="line-clamp-3">${movies.overview}</p>
-    `
-    return article
+    separatedGenres.add('All Genres')
+for(const movie of movies) {
+    separatedGenres.add(...movie.genres)
 }
 
-function renderArticles(movies, divCard) {
-    const div = document.createElement('div');
+printOptions(separatedGenres, selectContainer)
 
-    for (const movie of movies) {
-        const article = createCard(movie);
-        divCard.appendChild(article);
+printTemplate(separatedGenres, selectContainer, optionGenres)
+
+const inputMovieName = document.getElementById('inputMovieName')
+
+divCard.innerHTML += createTemplate(movies)
+
+
+inputMovieName.addEventListener('keyup', () => {
+    const filteredByName = filterByName(movies, inputMovieName.value);
+    const filteredByGenre = filterByGenre(filteredByName, selectContainer.value)
+    printTemplate(filteredByGenre, divCard, createCard)
+})
+
+selectContainer.addEventListener('change', () => {
+    const selectedGenre = selectContainer.value;
+    const checked = []
+    for (const i of selectedGenre){
+        if(i.checked){
+            checked.push(i.value)
+        }
     }
+    const filteredByGenre = filterByGenre(movies, selectedGenre);
+    const filteredByName = filterByName(filteredByGenre, inputMovieName.value);
+    printTemplate(filteredByName, divCard, createCard)    
+})
 
-    divCard.appendChild(div)
-}
-
-renderArticles(movies, divCard)
