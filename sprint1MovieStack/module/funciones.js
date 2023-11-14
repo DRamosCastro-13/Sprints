@@ -56,9 +56,19 @@ export function printOptions(genres, selectContainer){
 export function createDetail(movieDetail) {
 
     container.innerHTML = `
-    <div class="flex  flex-col flex-wrap">
-        <img src="${movieDetail.image}" alt="${movieDetail.title}">
-        <table class="mt-14 border-collapse border border-slate-100">
+    <div class="flex flex-row flex-wrap w-full justify-around">
+        <div class="w-5/12">
+            <img src="${movieDetail.image}" alt="${movieDetail.title}">
+        </div>
+        <article class="flex flex-col w-5/12 gap-3">
+            <h2 class="text-4xl font-bold">${movieDetail.title}</h2>
+            <h3 class="text-2xl">${movieDetail.tagline}</h3>
+            <h4 class="text-gray-400">${movieDetail.genres}</h4>
+            <p>${movieDetail.overview}</p>
+        </article>  
+    </div>
+    <div class="flex flex-row w-full mt-6 justify-around" >
+        <table class="border-collapse w-5/12">
             <tr>
                 <td class="border border-slate-100 p-3">Original Language</td>
                 <td class="border border-slate-100 p-3">${movieDetail.original_language}</td>
@@ -76,26 +86,18 @@ export function createDetail(movieDetail) {
                 <td class="border border-slate-100 p-3">${movieDetail.status}</td>
             </tr>
         </table>
-    </div>
-    <div class="flex flex-col" >
-        <article class="flex flex-col gap-3 h-80 flex-wrap">
-            <h2 class="text-4xl font-bold">${movieDetail.title}</h2>
-            <h3 class="text-2xl">${movieDetail.tagline}</h3>
-            <h4 class="text-gray-400">${movieDetail.genres}</h4>
-            <p>${movieDetail.overview}</p>
-        </article>
-        <table class="mt-4">
+        <table class="w-5/12 border-collapse">
             <tr>
-                <td class="border border-slate-100 p-3">Vote Average</td>
-                <td class="border border-slate-100 p-3">${movieDetail.vote_average}</td>
+                <td class="border border-slate-100 p-1">Vote Average</td>
+                <td class="border border-slate-100 p-1">${movieDetail.vote_average}</td>
             </tr>
             <tr>
-                <td class="border border-slate-100 p-3">Budget</td>
-                <td class="border border-slate-100 p-3">${movieDetail.budget}</td>
+                <td class="border border-slate-100 p-1">Budget</td>
+                <td class="border border-slate-100 p-1">${movieDetail.budget}</td>
             </tr>
             <tr>
-                <td class="border border-slate-100 p-3">Revenue</td>
-                <td class="border border-slate-100 p-3">${movieDetail.revenue}</td>
+                <td class="border border-slate-100 p-1">Revenue</td>
+                <td class="border border-slate-100 p-1">${movieDetail.revenue}</td>
             </tr>
         </table>
     </div>
