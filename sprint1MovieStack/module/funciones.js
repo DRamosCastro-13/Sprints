@@ -13,11 +13,15 @@ export function filterByName(a, name){
 }
 
 export function createCard(movies){
-    let article = ''
-    article += `
+    let colorFill = "rgba(0, 0, 0, 0.5"
+    /*if(array.includes(movies.id)){
+        colorFill = "rgb(220 38 38)"
+    }
+    */
+    let article = `
     <article class= "flex flex-col flex-wrap grow lg:grow-0 md:grow-0 bg-[#4e435e] border-box h-90 lg:w-70 lg:flex-wrap md:w-80 w-80 p-4 border-solid border-black border-2 rounded-xl relative">
         <button data-id="${movies.id}" data-boton="fav" type="button" class="absolute right-3 top-2">
-            <svg xmlns="http://www.w3.org/2000/svg" data-id="${movies.id}" data-boton="fav"  viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 28px; width: 28px; stroke: white; stroke-width: 2; overflow: visible;">
+            <svg xmlns="http://www.w3.org/2000/svg" data-id="${movies.id}" data-boton="fav"  viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: ${colorFill}); height: 28px; width: 28px; stroke: white; stroke-width: 2; overflow: visible;">
                 <path data-id="${movies.id}" data-boton="fav" d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path>
             </svg>
         </button>
