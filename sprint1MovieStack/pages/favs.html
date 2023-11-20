@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../assets/stylesheet.index.css">
     <link rel="icon" href="../assets/Moviestack_favicon.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Movies - Moviestack</title>
+    <title>Favorites - Moviestack</title>
 </head>
 <body>
     <header class="flex pt-6 fixed">
@@ -19,18 +19,13 @@
         </div>
         <nav>
             <a href="../index.html">Home</a>
-            <a href="#">Movies</a>
-            <a href="../pages/favs.html">Favs</a>
+            <a href="../pages/movies.html">Movies</a>
+            <a href="#">Favs</a>
     </header>
-    <main class="flex flex-col flex-wrap place-content-around -mt-6 pt-28">
-        <h2 class="text-center text-7xl mb-16 mt-20 font-bold">Movies</h2>
-        <div class="mb-16 flex flex-wrap justify-center gap-12">
-            <select id="genresDropdown" name="genresDropdown" class="rounded-md text-black w-72">
-               
-            </select>
-            <input type="text" value="" placeholder="Search for a movie..." class="rounded-md text-black w-72" id="inputMovieName">
-        </div>
-        <div id = "container" class="grid lg:grid-cols-4 lg:gap-x-6  gap-10 justify-items-center mb-10 md:grid-cols-2 grid-cols-1 relative">
+    <main class="flex flex-col flex-wrap place-content-around -mt-6 pt-28 min-h-screen">
+        <h2 class="text-center text-7xl mb-16 mt-20 font-bold">Your Favorites</h2>
+    
+        <div id = "containerFavs" class="grid lg:grid-cols-4 lg:gap-x-6  gap-10 justify-items-center mb-10 md:grid-cols-2 grid-cols-1 relative">
 
         </div>
 
@@ -39,7 +34,7 @@
         <h4>MindHub - Cohort 52</h4>
     </footer>
     <sript src="../assets/tailwind.config.js"></sript>
-    <script type="module" src="./movies.js"></script>
+    <script type="module" src="./favs.js"></script>
 </body>
 </html>
  
