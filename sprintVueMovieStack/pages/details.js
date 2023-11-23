@@ -30,7 +30,7 @@ const options = {
         .catch(err => console.log(err))
     },
     methods: {
-        
+
        
     },
 }

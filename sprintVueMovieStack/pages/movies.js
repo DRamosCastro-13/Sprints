@@ -15,6 +15,8 @@ const options = {
             filteredMovies: [],
             selectedGenre: "all",
             searchTitle: "",
+            id: "",
+            isFavorite: false,
         }
     },
     beforeCreate() {
@@ -24,11 +26,21 @@ const options = {
             this.movies = data.movies
             this.genres = [...new Set (this.movies.map(movie => movie.genres).flat().sort())]
             this.filteredMovies = this.movies
+            this.id = this.movies.find(movie => movie.id)
+            this.isFavorite = JSON.parse(localStorage.getItem("favoriteMovies")) || []
+            
         })
         .catch(err => console.log(err))
     },
     methods: {
-        
+        addFav(movieId) {
+            if(this.isFavorite.includes(movieId)) {
+                this.isFavorite.splice(this.isFavorite.indexOf(movieId), 1)
+            } else{
+                this.isFavorite.push(movieId)
+            }
+            localStorage.setItem("favoriteMovies", JSON.stringify(this.isFavorite))
+        }
        
     },
     computed: {
